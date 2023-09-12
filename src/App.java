@@ -1,18 +1,24 @@
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+
 public class App {
     public static void main(String[] args) {
         printBonusDatesBetween(2010, 2015);
     }
 
     public static void printBonusDatesBetween(int fromYear, int toYear) {
-        for (int year = fromYear; year <= toYear; year++) {
-            for (int month = 1; month <= 12; month++) {
-                for (int day = 1; day <= 31; day++) {
-                    String dateStr = String.format("%04d%02d%02d", year, month, day);
-                    String reversedDateStr = new StringBuilder(dateStr).reverse().toString();
-                    if (dateStr.equals(reversedDateStr)) {
-                        System.out.printf("%04d-%02d-%02d%n", year, month, day);
-                    }
-                }
+        final DateTimeFormatter formatterDisplay = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+        final DateTimeFormatter formatterValidate = DateTimeFormatter.ofPattern("yyyyMMdd");
+
+        final LocalDate startDate = LocalDate.of(fromYear, 1, 1);
+        final LocalDate endDate = LocalDate.of(toYear, 1, 1);
+
+        for (LocalDate date = startDate; date.isBefore(endDate); date = date.plusDays(1)) {
+            String formattedDate = date.format(formatterValidate);
+            String reversedDate = new StringBuilder(formattedDate).reverse().toString();
+            
+            if (formattedDate.equals(reversedDate)) {
+                System.out.println(date.format(formatterDisplay));
             }
         }
     }

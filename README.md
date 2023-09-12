@@ -1,18 +1,18 @@
-## Getting Started
+# Bonus task for Sourcery Academy
 
-Welcome to the VS Code Java world. Here is a guideline to help you get started to write Java code in Visual Studio Code.
+## Problem
 
-## Folder Structure
+Implement a method that prints all dates between two given years that remains the same, if numbers of the date are reversed.
 
-The workspace contains two folders by default, where:
+## Method signature
 
-- `src`: the folder to maintain sources
-- `lib`: the folder to maintain dependencies
+``` java
+public static void printBonusDatesBetween(int fromYear, int toYear);
+```
 
-Meanwhile, the compiled output files will be generated in the `bin` folder by default.
+## Example output of printBonusDatesBetween(2010, 2015)
 
-> If you want to customize the folder structure, open `.vscode/settings.json` and update the related settings there.
-
-## Dependency Management
-
-The `JAVA PROJECTS` view allows you to manage your dependencies. More details can be found [here](https://github.com/microsoft/vscode-java-dependency#manage-dependencies).
+``` txt
+2010-01-02  
+2011-11-02
+```
